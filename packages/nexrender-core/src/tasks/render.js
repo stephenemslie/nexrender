@@ -93,9 +93,7 @@ module.exports = (job, settings) => {
 
         const output = [];
         const instance = spawn(settings.binary, params, {
-            // NOTE: disabled PATH for now, there were a few
-            // issues related to plugins not working properly
-            // env: { PATH: path.dirname(settings.binary) },
+            env: { PATH: path.dirname(settings.binary) },
         });
 
         instance.on('error', err => reject(new Error(`Error starting aerender process: ${err}`)));
